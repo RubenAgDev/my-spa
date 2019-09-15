@@ -2,22 +2,19 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const RUNNING_FROM = process.env.REACT_APP_RUNNING_FROM;
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          I am running from:
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>
+          <code>{RUNNING_FROM}</code>
+        </p>
       </header>
     </div>
   );

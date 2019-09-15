@@ -8,10 +8,12 @@
     "react-scripts": "3.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_RUNNING_FROM=react-scripts_start react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker-build": "docker build --rm -t my-spa .",
+    "docker-run": "docker run --rm -p 8080:8080 my-spa"
   },
   "eslintConfig": {
     "extends": "react-app"
