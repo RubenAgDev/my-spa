@@ -19,4 +19,5 @@ Builds the Docker image using multi-stage builds:
 2) From nginx to serve the single page application
 
 `npm run docker-run`
+
 Runs the Docker container in the port 8080
