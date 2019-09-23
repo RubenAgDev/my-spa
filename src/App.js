@@ -10,10 +10,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          I am running from:
-        </p>
-        <p>
-          <code>{RUNNING_FROM}</code>
+          I am running from: <code>{RUNNING_FROM}</code>
         </p>
       </header>
     </div>

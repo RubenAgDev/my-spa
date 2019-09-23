@@ -29,6 +29,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <div id="my-space-explorer-container"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +40,24 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      const microFrontEndBasePath = 'http://localhost:5000';
+      fetch(`${microFrontEndBasePath}/micro-frontend-manifest.json`)
+        .then(manifest => {
+          return manifest.json();
+        })
+        .then(jsonManifest => {
+          const { js } = jsonManifest;
+          for(let i = 0; i < js.length; i++){
+            var script = document.createElement('script');
+            script.src = `${microFrontEndBasePath}${js[i]}`;
+            script.onload = () => {
+              console.log('Script loaded!');
+            }
+            document.body.appendChild(script);
+          }
+        })
+        .catch(error => console.error(error));
+    </script>
   </body>
 </html>
