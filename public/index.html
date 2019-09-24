@@ -41,23 +41,26 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script>
-      const microFrontEndBasePath = 'http://localhost:5000';
-      fetch(`${microFrontEndBasePath}/micro-frontend-manifest.json`)
-        .then(manifest => {
-          return manifest.json();
-        })
-        .then(jsonManifest => {
-          const { js } = jsonManifest;
-          for(let i = 0; i < js.length; i++){
-            var script = document.createElement('script');
-            script.src = `${microFrontEndBasePath}${js[i]}`;
-            script.onload = () => {
-              console.log('Script loaded!');
+      (function (w, d, s, b, c) {
+        fetch(`${b}/micro-frontend-manifest.json`)
+          .then(res => {
+            return res.json();
+          })
+          .then(m => {
+            const { js } = m;
+            for(let i = 0; i < js.length; i++){
+              const script = d.createElement(s);
+              script.src = `${b}${js[i]}`;
+              script.onload = () => {
+                if(w.renderMySpaceExplorer) {
+                  w.renderMySpaceExplorer(c);
+                }
+              }
+              d.body.appendChild(script);
             }
-            document.body.appendChild(script);
-          }
-        })
-        .catch(error => console.error(error));
+          })
+          .catch(error => console.error(error));
+      })(window, document, 'script', 'http://localhost:5000', 'my-space-explorer-container');
     </script>
   </body>
 </html>
