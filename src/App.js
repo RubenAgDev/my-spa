@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const RUNNING_FROM = process.env.REACT_APP_RUNNING_FROM;
+const { REACT_APP_RUNNING_FROM }  = process.env;
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          I am running from: <code>{RUNNING_FROM}</code>
+          I am running from: <code>{REACT_APP_RUNNING_FROM}</code>
         </p>
       </header>
     </div>
